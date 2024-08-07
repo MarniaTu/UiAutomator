@@ -25,8 +25,6 @@ class ChangeTextTest {
     private lateinit var device: UiDevice
     private val textToSet = "Netology"
     private val emptyLine = "     "
-    private val initialText = "Привет, UiAutomator!"
-
 
 //    @Test
 //    fun testInternetSettings() {
@@ -121,6 +119,9 @@ class ChangeTextTest {
         waitForPackage(packageName)
 
         device.findObject(By.res(packageName, "userInput")).text = emptyLine
+
+        val initialText = device.findObject(By.res(packageName, "textToBeChanged")).text
+
         device.findObject(By.res(packageName, "buttonChange")).click()
 
         val result = device.findObject(By.res(packageName, "textToBeChanged")).text
